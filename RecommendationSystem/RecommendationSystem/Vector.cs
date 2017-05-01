@@ -26,37 +26,46 @@ namespace RecommendationSystem
             this.Dimensions = dimensions;
         }
 
-        public static double Distance(Vector v1, Vector v2)
+        public static double EuclideanDistance(Vector v1, Vector v2)
         {
             if (v1.Dimensions.Length != v2.Dimensions.Length)
-                throw new Exception();
+                throw new Exception("Can't compute euclidean distance from vectors with different dimension sizes.");
 
-            double squaredDimensions = 0;
+            double summation = 0;
             for (int i = 0; i < v1.Dimensions.Length; i++)
             {
-                squaredDimensions += Math.Pow(v1.Dimensions[i] - v2.Dimensions[i], 2);
+                summation += Math.Pow(v1.Dimensions[i] - v2.Dimensions[i], 2);
             }
-            return Math.Sqrt(squaredDimensions);
+
+            return Math.Sqrt(summation);
         }
 
-        public double Distance(Vector v2)
+        public static double ManhattanDistance(Vector v1, Vector v2)
         {
-            if (this.Dimensions.Length != v2.Dimensions.Length)
-                throw new Exception();
+            if (v1.Dimensions.Length != v2.Dimensions.Length)
+                throw new Exception("Can't compute manhattan distance from vectors with different dimension sizes.");
 
-            double squaredDimensions = 0;
-            for (int i = 0; i < Dimensions.Length; i++)
+            double summation = 0;
+            for (int i = 0; i < v1.Dimensions.Length; i++)
             {
-                squaredDimensions += Math.Pow(this.Dimensions[i] - v2.Dimensions[i], 2);
+                summation += Math.Abs(v1.Dimensions[i] - v2.Dimensions[i]);
             }
-            return Math.Sqrt(squaredDimensions);
+
+            return summation;
         }
 
-        public IEnumerator GetEnumerator()
+        // ---
+        public double EuclideanDistance(Vector v2)
         {
-            return Dimensions.GetEnumerator();
+            return EuclideanDistance(this, v2);
         }
 
+        public double ManhattanDistance(Vector v2)
+        {
+            return ManhattanDistance(this, v2);
+        }
+
+        // ---
         public static Vector operator *(Vector v1, Vector v2)
         {
             if (v1.Dimensions.Length != v2.Dimensions.Length)
@@ -129,9 +138,15 @@ namespace RecommendationSystem
             return new Vector(dimensions);
         }
 
+        // ---
         public Vector Clone()
         {
             return new Vector(Dimensions);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return Dimensions.GetEnumerator();
         }
 
         public override string ToString()
