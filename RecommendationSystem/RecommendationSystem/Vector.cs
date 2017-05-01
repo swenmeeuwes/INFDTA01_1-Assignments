@@ -15,12 +15,7 @@ namespace RecommendationSystem
         {
             get
             {
-                double squaredDimensions = 0;
-                foreach (var dimension in Dimensions)
-                {
-                    squaredDimensions += Math.Pow(dimension, 2);
-                }
-                return Math.Sqrt(squaredDimensions);
+                return Math.Sqrt(Dimensions.Sum(d => Math.Pow(d, 2)));
             }
         }
 
