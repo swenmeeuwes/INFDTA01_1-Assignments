@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="similaritystrategies\EuclideanDistanceSimilarity.cs" />
     <Compile Include="similaritystrategies\ISimilarityStrategy.cs" />
+    <Compile Include="similaritystrategies\ManhattanDistanceSimilarity.cs" />
     <None Include="Vector.cs.old" />
   </ItemGroup>
   <ItemGroup>

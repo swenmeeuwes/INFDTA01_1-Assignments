@@ -11,7 +11,7 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
+            ISimilarityStrategy similarityStrategy = new ManhattanDistanceSimilarity();
 
             var data = DataProvider.GetData();
 
