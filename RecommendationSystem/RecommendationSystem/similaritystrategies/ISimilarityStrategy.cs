@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecommendationSystem.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace RecommendationSystem.similaritystrategies
 {
     interface ISimilarityStrategy
     {
-        float ComputeSimilarity();
+        double ComputeSimilarity(User u1, User u2);
     }
 }

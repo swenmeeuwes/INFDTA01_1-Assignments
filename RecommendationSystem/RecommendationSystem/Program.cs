@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecommendationSystem.similaritystrategies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,12 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            var data = DataProvider.GetData();           
+            ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
+
+            var data = DataProvider.GetData();
+
+            var similarity = similarityStrategy.ComputeSimilarity(data["1"], data["3"]);
+            Console.WriteLine(similarity);
         }
     }
 }
