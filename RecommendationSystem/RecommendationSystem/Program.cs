@@ -11,11 +11,11 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            ISimilarityStrategy similarityStrategy = new ManhattanDistanceSimilarity();
+            ISimilarityStrategy similarityStrategy = new CosineSimilarity();
 
             var data = DataProvider.GetData();
 
-            var similarity = similarityStrategy.ComputeSimilarity(data["1"], data["3"]);
+            var similarity = similarityStrategy.ComputeSimilarity(data["1"], data["4"]);
             Console.WriteLine(similarity);
         }
     }
