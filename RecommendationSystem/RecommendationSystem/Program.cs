@@ -10,6 +10,8 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
+            var data = DataProvider.GetData();
+            DictionaryPrettyPrinter.PrettyPrint(data);
         }
     }
 }
