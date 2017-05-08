@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecommendationSystem.model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -23,31 +24,43 @@ namespace RecommendationSystem
         /// Columns of this file consist of 'userId', 'articleId' and the 'rating'.
         /// Ex: user 2 has rated 3.5 the article 105
         /// </summary>
-        /// <returns>A dictionary with the userId as the key and a dictionary as value, containing the articleId as key and rating as value</returns>
-        public static Dictionary<string, Dictionary<string, double>> GetData()
+        /// <returns>A dictionary with userId as keys and the user objects as values</returns>
+        public static Dictionary<string, User> GetData()
         {
-            Dictionary<string, Dictionary<string, double>> ratings = new Dictionary<string, Dictionary<string, double>>();
+            Dictionary<string, List<ArticleRating>> tempRatings = new Dictionary<string, List<ArticleRating>>();
             using (StreamReader streamReader = new StreamReader(DATASET_FILEPATH))
             {
                 string line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     string[] dimensions = line.Split(DELIMITER);
-                    if(ratings.ContainsKey(dimensions[USER_ID]))
+
+                    ArticleRating articleRating = new ArticleRating()
+                    {
+                        ArticleNumber = dimensions[ARTICLE_ID],
+                        Rating = double.Parse(dimensions[RATING], CultureInfo.InvariantCulture)
+                    };
+
+                    if (tempRatings.ContainsKey(dimensions[USER_ID]))
                     {
                         // UserID exists in dictionary => add the article and rating to that user
-                        ratings[dimensions[USER_ID]].Add(dimensions[ARTICLE_ID], double.Parse(dimensions[RATING], CultureInfo.InvariantCulture));
+                        tempRatings[dimensions[USER_ID]].Add(articleRating);
                     }
                     else
                     {
                         // UserID doesn't exist in dictionary => create a new entry
-                        Dictionary<string, double> rating = new Dictionary<string, double>();
-                        rating.Add(dimensions[ARTICLE_ID], double.Parse(dimensions[RATING], CultureInfo.InvariantCulture));
+                        List<ArticleRating> articleRatings = new List<ArticleRating>();
+                        articleRatings.Add(articleRating);
 
-                        ratings.Add(dimensions[USER_ID], rating);
+                        tempRatings.Add(dimensions[USER_ID], articleRatings);
                     }                      
                 }
             };
+
+            Dictionary<string, User> ratings = new Dictionary<string, User>();
+            foreach (var rating in tempRatings)
+                ratings.Add(rating.Key, new User(rating.Value.OrderBy(x => x.ArticleNumber).ToArray()));
+
             return ratings;
         }
     }
