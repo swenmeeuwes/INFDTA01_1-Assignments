@@ -11,7 +11,7 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            ISimilarityStrategy similarityStrategy = new CosineSimilarity();
+            ISimilarityStrategy similarityStrategy = new PearsonCoefficientSimilarity();
 
             var data = DataProvider.GetData();
 

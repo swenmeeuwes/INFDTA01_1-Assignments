@@ -51,6 +51,7 @@
     <Compile Include="similaritystrategies\ISimilarityStrategy.cs" />
     <Compile Include="similaritystrategies\CosineSimilarity.cs" />
     <Compile Include="similaritystrategies\ManhattanDistanceSimilarity.cs" />
+    <Compile Include="similaritystrategies\PearsonCoefficientSimilarity.cs" />
     <None Include="Vector.cs.old" />
   </ItemGroup>
   <ItemGroup>
