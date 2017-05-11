@@ -44,7 +44,6 @@ namespace RecommendationSystem.similaritystrategies
                 summationDenominatorAverageY += y[i].Rating;
             }
 
-            // n = Length - 1 or Length?
             var n = articleRatingsU1.Length;
             return (summationNumerator - (summationNumeratorAverageX * summationNumeratorAverageY) / n)
                 / (Math.Sqrt(summationDenominatorLeft - Math.Pow(summationDenominatorAverageX, 2) / n) * Math.Sqrt(summationDenominatorRight - Math.Pow(summationDenominatorAverageY, 2) / n));
