@@ -11,12 +11,23 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            ISimilarityStrategy similarityStrategy = new PearsonCoefficientSimilarity();
-
             var data = DataProvider.GetData();
 
-            var similarity = similarityStrategy.ComputeSimilarity(data["1"], data["4"]);
-            Console.WriteLine(similarity);
+            ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
+            var euclideanDistanceSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
+            Console.WriteLine("Euclidean distance similarity: {0}", euclideanDistanceSimilarity);
+
+            similarityStrategy = new ManhattanDistanceSimilarity();
+            var manhattanDistanceSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
+            Console.WriteLine("Manhattan distance similarity: {0}", manhattanDistanceSimilarity);
+
+            similarityStrategy = new PearsonCoefficientSimilarity();
+            var pearsonCoefficientSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
+            Console.WriteLine("Pearson coefficient similarity: {0}", pearsonCoefficientSimilarity);
+
+            similarityStrategy = new CosineSimilarity();
+            var cosineSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
+            Console.WriteLine("Cosine similarity: {0}", cosineSimilarity);
         }
     }
 }

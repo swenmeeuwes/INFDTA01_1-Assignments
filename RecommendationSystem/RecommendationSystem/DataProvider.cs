@@ -12,7 +12,7 @@ namespace RecommendationSystem
     class DataProvider
     {
         readonly static char DELIMITER = ',';
-        readonly static string DATASET_FILEPATH = "assets/userItem.data";
+        readonly static string DATASET_FILEPATH = "assets/lesson2exercise.data";//"assets/userItem.data";
 
         // Columns of the 'userItem.data' file.
         readonly static int USER_ID = 0;
