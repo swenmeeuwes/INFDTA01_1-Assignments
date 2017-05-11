@@ -52,6 +52,7 @@
     <Compile Include="similaritystrategies\CosineSimilarity.cs" />
     <Compile Include="similaritystrategies\ManhattanDistanceSimilarity.cs" />
     <Compile Include="similaritystrategies\PearsonCoefficientSimilarity.cs" />
+    <Compile Include="useritem\NearestNeighbour.cs" />
     <None Include="assets\lesson2exercise.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

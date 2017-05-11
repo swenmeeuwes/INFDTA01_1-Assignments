@@ -8,6 +8,7 @@ namespace RecommendationSystem.model
 {
     class User
     {
+        public double Similarity { get; set; }
         public ArticleRating[] articleRatings;
 
         public User(ArticleRating[] articleRatings)

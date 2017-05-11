@@ -18,8 +18,8 @@ namespace RecommendationSystem.similaritystrategies
             var articleRatingsU1 = u1.articleRatings.Where(r => articleNumbersU2.Contains(r.ArticleNumber)).ToArray();
             var articleRatingsU2 = u2.articleRatings.Where(r => articleNumbersU1.Contains(r.ArticleNumber)).ToArray();
 
-            // Numerator (up)
-            // Denominator (down)
+            // Numerator (above the line)
+            // Denominator (below the line)
             var summationNumerator = 0d;
             var summationNumeratorAverageX = 0d;
             var summationNumeratorAverageY = 0d;
