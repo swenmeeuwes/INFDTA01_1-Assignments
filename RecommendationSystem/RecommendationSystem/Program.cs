@@ -20,6 +20,11 @@ namespace RecommendationSystem
             var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
 
 
+            foreach (var neighbour in nearestNeighbours)
+            {
+                Console.WriteLine(neighbour);
+            }
+
             //ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
             //var euclideanDistanceSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
             //Console.WriteLine("Euclidean distance similarity: {0}", euclideanDistanceSimilarity);

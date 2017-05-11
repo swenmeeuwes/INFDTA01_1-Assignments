@@ -15,5 +15,10 @@ namespace RecommendationSystem.model
         {
             this.articleRatings = articleRatings;
         }
+
+        public override string ToString()
+        {
+            return string.Format("[User(Similarity: {0}; ArticleRatings: {1})]", Similarity, articleRatings);
+        }
     }
 }
