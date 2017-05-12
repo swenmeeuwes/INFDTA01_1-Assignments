@@ -19,9 +19,23 @@ namespace RecommendationSystem
             var userPool = data.Where(u => u.Key != "1").Select(u => u.Value).ToArray();
             var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
 
+            // Prediction ratings test from slides lesson 2
+            var testNeighbours = new User[] {
+                new User(new ArticleRating[] {
+                    new ArticleRating() { ArticleNumber = "1", Rating = 4.5d }
+                }) { Similarity = 0.5 },
+                new User(new ArticleRating[] {
+                    new ArticleRating() { ArticleNumber = "1", Rating = 5d }
+                }) { Similarity = 0.7 },
+                new User(new ArticleRating[] {
+                    new ArticleRating() { ArticleNumber = "1", Rating = 3.5d }
+                }) { Similarity = 0.8 }
+            };
+            var r = testNeighbours.PredictRatings(); // Should be 4.275 according to slide
+            // -----
 
             foreach (var neighbour in nearestNeighbours)
-            {
+            {                
                 Console.WriteLine(neighbour);
             }
 
