@@ -10,5 +10,10 @@ namespace RecommendationSystem.model
     {
         public string ArticleNumber { get; set; }
         public double Rating { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[ArticleRating(ArticleNumber: {0}; Rating: {1})]", ArticleNumber, Rating);
+        }
     }
 }
