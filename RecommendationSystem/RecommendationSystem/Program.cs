@@ -21,13 +21,13 @@ namespace RecommendationSystem
 
             // Prediction ratings test from slides lesson 2
             var testNeighbours = new User[] {
-                new User(new ArticleRating[] {
+                new User("1", new ArticleRating[] {
                     new ArticleRating() { ArticleNumber = "1", Rating = 4.5d }
                 }) { Similarity = 0.5 },
-                new User(new ArticleRating[] {
+                new User("2", new ArticleRating[] {
                     new ArticleRating() { ArticleNumber = "1", Rating = 5d }
                 }) { Similarity = 0.7 },
-                new User(new ArticleRating[] {
+                new User("3", new ArticleRating[] {
                     new ArticleRating() { ArticleNumber = "1", Rating = 3.5d }
                 }) { Similarity = 0.8 }
             };
@@ -35,7 +35,8 @@ namespace RecommendationSystem
             // -----
 
             foreach (var neighbour in nearestNeighbours)
-            {                
+            {
+                Console.WriteLine("User {0} has the following recommendations:");
                 Console.WriteLine(neighbour);
             }
 

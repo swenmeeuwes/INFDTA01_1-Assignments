@@ -59,7 +59,7 @@ namespace RecommendationSystem
 
             Dictionary<string, User> ratings = new Dictionary<string, User>();
             foreach (var rating in tempRatings)
-                ratings.Add(rating.Key, new User(rating.Value.OrderBy(x => x.ArticleNumber).ToArray()));
+                ratings.Add(rating.Key, new User(rating.Key, rating.Value.OrderBy(x => x.ArticleNumber).ToArray()));
 
             return ratings;
         }

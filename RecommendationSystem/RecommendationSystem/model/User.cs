@@ -8,11 +8,13 @@ namespace RecommendationSystem.model
 {
     class User
     {
+        public string Id { get; set; }
         public double Similarity { get; set; }
         public ArticleRating[] articleRatings;
 
-        public User(ArticleRating[] articleRatings)
+        public User(string id, ArticleRating[] articleRatings)
         {
+            this.Id = id;
             this.articleRatings = articleRatings;
         }
 
