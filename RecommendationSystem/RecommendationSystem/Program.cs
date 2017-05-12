@@ -34,11 +34,9 @@ namespace RecommendationSystem
             var r = testNeighbours.PredictRatings(); // Should be 4.275 according to slide
             // -----
 
-            foreach (var neighbour in nearestNeighbours)
-            {
-                Console.WriteLine("User {0} has the following recommendations:");
-                Console.WriteLine(neighbour);
-            }
+            var predictions = nearestNeighbours.PredictRatings();
+            Console.WriteLine("User {0} has the following predictions:", targetUser.Id);
+            Array.ForEach(predictions.OrderBy(p => p.ArticleNumber).ToArray(), p => Console.WriteLine(p));
 
             //ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
             //var euclideanDistanceSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);
