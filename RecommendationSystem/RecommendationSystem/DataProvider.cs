@@ -63,5 +63,44 @@ namespace RecommendationSystem
 
             return ratings;
         }
+
+        public static Dictionary<string, User> GetData(string filePath, char delimiter)
+        {
+            Dictionary<string, List<ArticleRating>> tempRatings = new Dictionary<string, List<ArticleRating>>();
+            using (StreamReader streamReader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    string[] dimensions = line.Split(delimiter);
+
+                    ArticleRating articleRating = new ArticleRating()
+                    {
+                        ArticleNumber = dimensions[ARTICLE_ID],
+                        Rating = double.Parse(dimensions[RATING], CultureInfo.InvariantCulture)
+                    };
+
+                    if (tempRatings.ContainsKey(dimensions[USER_ID]))
+                    {
+                        // UserID exists in dictionary => add the article and rating to that user
+                        tempRatings[dimensions[USER_ID]].Add(articleRating);
+                    }
+                    else
+                    {
+                        // UserID doesn't exist in dictionary => create a new entry
+                        List<ArticleRating> articleRatings = new List<ArticleRating>();
+                        articleRatings.Add(articleRating);
+
+                        tempRatings.Add(dimensions[USER_ID], articleRatings);
+                    }
+                }
+            };
+
+            Dictionary<string, User> ratings = new Dictionary<string, User>();
+            foreach (var rating in tempRatings)
+                ratings.Add(rating.Key, new User(rating.Key, rating.Value.OrderBy(x => x.ArticleNumber).ToArray()));
+
+            return ratings;
+        }
     }
 }
