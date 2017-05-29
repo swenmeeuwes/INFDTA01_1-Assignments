@@ -20,7 +20,7 @@ namespace RecommendationSystem.model
 
         public override string ToString()
         {
-            return string.Format("[User(Similarity: {0}; ArticleRatings: {1})]", Similarity, articleRatings);
+            return string.Format("[User(Id: {0}; Similarity: {1}; ArticleRatings: {2})]", Id, Similarity, articleRatings);
         }
     }
 }
