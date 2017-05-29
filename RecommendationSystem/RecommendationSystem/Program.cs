@@ -35,6 +35,10 @@ namespace RecommendationSystem
             // -----
 
             var predictions = nearestNeighbours.PredictRatings();
+
+            Console.WriteLine("User {0} nearest neighbours are:", targetUser.Id);
+            Array.ForEach(nearestNeighbours, p => Console.WriteLine(p));
+
             Console.WriteLine("User {0} has the following predictions:", targetUser.Id);
             Array.ForEach(predictions.OrderBy(p => p.ArticleNumber).ToArray(), p => Console.WriteLine(p));
 
