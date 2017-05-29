@@ -57,6 +57,9 @@
     <None Include="assets\lesson2exercise.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="assets\u.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Vector.cs.old" />
   </ItemGroup>
   <ItemGroup>
