@@ -56,7 +56,7 @@ namespace RecommendationSystem.useritem
                 }
             }
 
-            return nearestNeighbours.OrderByDescending(u => u.Similarity).ToArray();
+            return nearestNeighbours.Where(u => u != null).OrderByDescending(u => u.Similarity).ToArray();
         }
     }
 }
