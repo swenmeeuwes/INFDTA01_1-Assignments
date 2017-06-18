@@ -9,26 +9,32 @@ namespace ContentBased.model
     public class DeviationMatrix
     {
         private Deviation[,] matrix;
-        private string[] labels;
+
+        private Dictionary<string, int> labelLookupDictionary; // For optimisation
 
         public DeviationMatrix(string[] labels)
         {
             matrix = new Deviation[labels.Length, labels.Length];
-            this.labels = labels;
+
+            labelLookupDictionary = new Dictionary<string, int>();
+            for (int i = 0; i < labels.Length; i++)
+            {
+                labelLookupDictionary.Add(labels[i], i);
+            }
         }
 
         public void Set(string xLabel, string yLabel, Deviation deviation)
         {
-            var xIndex = Array.FindIndex(labels, l => l == xLabel);
-            var yIndex = Array.FindIndex(labels, l => l == yLabel);
+            var xIndex = labelLookupDictionary[xLabel];
+            var yIndex = labelLookupDictionary[yLabel];
 
             matrix[xIndex, yIndex] = deviation;
         }
 
         public void Add(string xLabel, string yLabel, Deviation deviation)
         {
-            var xIndex = Array.FindIndex(labels, l => l == xLabel);
-            var yIndex = Array.FindIndex(labels, l => l == yLabel);
+            var xIndex = labelLookupDictionary[xLabel];
+            var yIndex = labelLookupDictionary[yLabel];
 
             var current = matrix[xIndex, yIndex];
             if (current != null)
@@ -44,8 +50,8 @@ namespace ContentBased.model
 
         public Deviation Get(string xLabel, string yLabel)
         {
-            var xIndex = Array.FindIndex(labels, l => l == xLabel);
-            var yIndex = Array.FindIndex(labels, l => l == yLabel);
+            var xIndex = labelLookupDictionary[xLabel];
+            var yIndex = labelLookupDictionary[yLabel];
 
             return matrix[xIndex, yIndex];
         }
@@ -69,6 +75,10 @@ namespace ContentBased.model
             {
                 var rating = userRatings[i];
                 var deviation = Get(targetRatingNumber, rating.ArticleNumber);
+
+                if (deviation == null)
+                    continue;
+
                 numerator += (rating.Rating + deviation.Average) * deviation.Readings;
                 denominator += deviation.Readings;
             }
