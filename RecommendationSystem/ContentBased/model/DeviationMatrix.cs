@@ -88,5 +88,38 @@ namespace ContentBased.model
                 Rating = numerator / denominator
             };
         }
+
+        public ArticleRating[] PredictTop(User user, int amountOfItems)
+        {
+            var recommandations = new List<ArticleRating>();        
+            var userRatings = user.articleRatings;
+            var articlesToPredict = labelLookupDictionary.Where(x => !user.articleRatings.Select(r => r.ArticleNumber).Contains(x.Key)).ToArray();
+
+            for (int i = 0; i < articlesToPredict.Length; i++)
+            {
+                var targetRatingNumber = articlesToPredict[i].Key;
+
+                var numerator = 0d;
+                var denominator = 0d;
+                for (int j = 0; j < userRatings.Length; j++)
+                {
+                    var rating = userRatings[j];
+                    var deviation = Get(targetRatingNumber, rating.ArticleNumber);
+
+                    if (deviation == null)
+                        continue;
+
+                    numerator += (rating.Rating + deviation.Average) * deviation.Readings;
+                    denominator += deviation.Readings;
+                }
+
+                recommandations.Add(new ArticleRating()
+                {
+                    ArticleNumber = targetRatingNumber,
+                    Rating = numerator / denominator
+                });
+            }
+            return recommandations.OrderByDescending(x => x.Rating).Take(amountOfItems).ToArray();
+        }
     }
 }
