@@ -18,6 +18,10 @@ namespace RecommendationSystem.similaritystrategies
             var articleRatingsU1 = u1.articleRatings.Where(r => articleNumbersU2.Contains(r.ArticleNumber)).ToArray();
             var articleRatingsU2 = u2.articleRatings.Where(r => articleNumbersU1.Contains(r.ArticleNumber)).ToArray();
 
+            // If the two users haven't rated a single matching article
+            if (articleRatingsU1.Length == 0 || articleRatingsU2.Length == 0)
+                return Double.NegativeInfinity;
+
             // Numerator (above the line)
             // Denominator (below the line)
             var summationNumerator = 0d;
@@ -45,8 +49,11 @@ namespace RecommendationSystem.similaritystrategies
             }
 
             var n = articleRatingsU1.Length;
-            return (summationNumerator - (summationNumeratorAverageX * summationNumeratorAverageY) / n)
+
+            // Right bottom can result in 0 thus resulting in a NaN? (check left bottom side?)
+            var res = (summationNumerator - (summationNumeratorAverageX * summationNumeratorAverageY) / n)
                 / (Math.Sqrt(summationDenominatorLeft - Math.Pow(summationDenominatorAverageX, 2) / n) * Math.Sqrt(summationDenominatorRight - Math.Pow(summationDenominatorAverageY, 2) / n));
+            return res;
         }
     }
 }

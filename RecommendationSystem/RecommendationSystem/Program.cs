@@ -13,13 +13,14 @@ namespace RecommendationSystem
     {
         static void Main(string[] args)
         {
-            var data = DataProvider.GetData();
+            var data = DataProvider.GetData("assets/u.data", '\t');
 
-            var targetUser = data["1"];
-            var userPool = data.Where(u => u.Key != "1").Select(u => u.Value).ToArray();
-            var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
+            var targetUserId = "4";
+            var targetUser = data[targetUserId];
+            var userPool = data.Where(u => u.Key != targetUserId).Select(u => u.Value).ToArray();
+            var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 12, 0.35d, new CosineSimilarity());
 
-            // Prediction ratings test from slides lesson 2
+            // Prediction ratings test from slides lesson 2 - put in a unit test maybe?
             var testNeighbours = new User[] {
                 new User("1", new ArticleRating[] {
                     new ArticleRating() { ArticleNumber = "1", Rating = 4.5d }
