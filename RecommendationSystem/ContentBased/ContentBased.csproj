@@ -57,6 +57,9 @@
     <None Include="assets\slide.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="assets\u.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="assets\userItem.data">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
