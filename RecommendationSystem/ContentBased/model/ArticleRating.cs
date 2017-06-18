@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContentBased.model
 {
-    class ArticleRating
+    public class ArticleRating
     {
         public string ArticleNumber { get; set; }
         public double Rating { get; set; }

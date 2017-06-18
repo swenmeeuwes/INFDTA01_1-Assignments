@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContentBased.controller
 {
-    class DeviationMatrixFactory
+    public class DeviationMatrixFactory
     {
         private static DeviationMatrixFactory PInstance { get; set; }
         public static DeviationMatrixFactory Instance

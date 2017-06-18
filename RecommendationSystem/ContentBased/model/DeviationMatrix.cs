@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContentBased.model
 {
-    class DeviationMatrix
+    public class DeviationMatrix
     {
         private Deviation[,] matrix;
         private string[] labels;

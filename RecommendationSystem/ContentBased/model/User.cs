@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContentBased.model
 {
-    class User
+    public class User
     {
         public string Id { get; set; }
         public ArticleRating[] articleRatings;

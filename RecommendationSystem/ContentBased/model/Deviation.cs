@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContentBased.model
 {
-    class Deviation
+    public class Deviation
     {
         public int Readings { get; set; } // Amount of ratings
         public double Value { get; set; }
