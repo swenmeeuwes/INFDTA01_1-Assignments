@@ -2,6 +2,7 @@
 using ContentBased.model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +11,23 @@ namespace ContentBased
 {
     class Program
     {
-        private readonly static string FILE_PATH = "assets/userItem.data";
-        private readonly static char DELIMITER = ',';
+        private readonly static string FILE_PATH = "assets/u.data";
+        private readonly static char DELIMITER = '\t';
 
         static void Main(string[] args)
         {
-            var data = DataProvider.GetData(FILE_PATH, DELIMITER);
-            var deviationMatrix = DeviationMatrixFactory.Instance.Create(data);
+            var stopwatch = new Stopwatch();
 
-            var user7 = data["7"];
-            Console.WriteLine("Prediction u7 for 101: {0}", deviationMatrix.Predict(user7, "101"));
+            var data = DataProvider.GetData(FILE_PATH, DELIMITER);
+
+            stopwatch.Start();
+            var deviationMatrix = DeviationMatrixFactory.Instance.Create(data);
+            stopwatch.Stop();
+
+            //Console.WriteLine("Elapsed seconds: {0}.", stopwatch.ElapsedMilliseconds / 1000);
+
+            var user186 = data["186"];
+            Console.WriteLine("Prediction 186 for 1599: {0}", deviationMatrix.Predict(user186, "1599"));
         }
     }
 }

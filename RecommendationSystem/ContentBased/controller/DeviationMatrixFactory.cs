@@ -24,11 +24,18 @@ namespace ContentBased.controller
 
         public DeviationMatrix Create(Dictionary<string, User> from)
         {
+            Console.WriteLine("Constructing deviation matrix...");
+
             var distinctArticles = from.SelectMany(n => n.Value.articleRatings).Select(r => r.ArticleNumber).Distinct();
             var workMatrix = new DeviationMatrix(distinctArticles.ToArray());
 
+            var progressCounter = -1;
+
+            // Per user
             foreach (var item in from)
             {
+                progressCounter++;
+                Console.Write("\r{0}%   ", Math.Round(((float)progressCounter / from.Count) * 100f));
                 var user = item.Value;
                 if (user.articleRatings.Length < 2)
                     continue;
@@ -40,9 +47,11 @@ namespace ContentBased.controller
                     {
                         var deviation = new Deviation(1, aRating.Rating - bRating.Rating);
                         workMatrix.Add(aRating.ArticleNumber, bRating.ArticleNumber, deviation);
-                    }                    
+                    }
                 }
             }
+
+            Console.WriteLine("Done constructing the deviation matrix!");
 
             return workMatrix;
         }

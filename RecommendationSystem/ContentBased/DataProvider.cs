@@ -21,6 +21,8 @@ namespace ContentBased
 
         public static Dictionary<string, User> GetData(string filePath, char delimiter)
         {
+            Console.WriteLine("Reading '{0}' and spliting on '{1}'.", filePath, delimiter);
+
             Dictionary<string, List<ArticleRating>> tempRatings = new Dictionary<string, List<ArticleRating>>();
             using (StreamReader streamReader = new StreamReader(filePath))
             {
@@ -32,7 +34,7 @@ namespace ContentBased
                     ArticleRating articleRating = new ArticleRating()
                     {
                         ArticleNumber = dimensions[ARTICLE_ID],
-                        Rating = double.Parse(dimensions[RATING], CultureInfo.InvariantCulture)
+                        Rating = float.Parse(dimensions[RATING], CultureInfo.InvariantCulture)
                     };
 
                     if (tempRatings.ContainsKey(dimensions[USER_ID]))
@@ -54,6 +56,8 @@ namespace ContentBased
             Dictionary<string, User> ratings = new Dictionary<string, User>();
             foreach (var rating in tempRatings)
                 ratings.Add(rating.Key, new User(rating.Key, rating.Value.OrderBy(x => x.ArticleNumber).ToArray()));
+
+            Console.WriteLine("Done reading '{0}'!", filePath);
 
             return ratings;
         }
