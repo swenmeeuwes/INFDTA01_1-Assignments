@@ -57,15 +57,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ContentBasedUnitTest.cs" />
+    <Compile Include="UserItemUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContentBased\ContentBased.csproj">
+    <ProjectReference Include="..\ContentBased\Collaborative Item-Item.csproj">
       <Project>{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}</Project>
-      <Name>ContentBased</Name>
+      <Name>Collaborative Item-Item</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

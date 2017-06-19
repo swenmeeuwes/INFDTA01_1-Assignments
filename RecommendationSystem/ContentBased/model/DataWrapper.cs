@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentBased.model
+namespace ItemItem.model
 {
-    public class ContentBasedDataWrapper
+    public class DataWrapper
     {
         public Dictionary<string, User> UserData { get; private set; }
         public DeviationMatrix DeviationMatrix { get; private set; }
 
-        public ContentBasedDataWrapper(Dictionary<string, User> userData, DeviationMatrix deviationMatrix)
+        public DataWrapper(Dictionary<string, User> userData, DeviationMatrix deviationMatrix)
         {
             UserData = userData;
             DeviationMatrix = deviationMatrix;

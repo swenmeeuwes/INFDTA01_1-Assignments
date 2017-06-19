@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative", "RecommendationSystem\Collaborative.csproj", "{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-Item", "RecommendationSystem\Collaborative User-Item.csproj", "{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentBased", "ContentBased\ContentBased.csproj", "{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Item-Item", "ContentBased\Collaborative Item-Item.csproj", "{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentBasedTests", "ContentBasedTests\ContentBasedTests.csproj", "{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-Item Tests", "ContentBasedTests\Collaborative User-Item Tests.csproj", "{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

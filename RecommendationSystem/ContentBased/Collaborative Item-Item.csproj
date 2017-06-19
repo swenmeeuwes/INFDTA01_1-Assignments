@@ -45,7 +45,7 @@
     <Compile Include="controller\DeviationMatrixFactory.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="model\ArticleRating.cs" />
-    <Compile Include="model\ContentBasedDataWrapper.cs" />
+    <Compile Include="model\DataWrapper.cs" />
     <Compile Include="model\Deviation.cs" />
     <Compile Include="model\DeviationMatrix.cs" />
     <Compile Include="model\User.cs" />

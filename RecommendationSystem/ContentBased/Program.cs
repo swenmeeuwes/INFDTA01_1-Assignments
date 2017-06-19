@@ -1,5 +1,5 @@
-﻿using ContentBased.controller;
-using ContentBased.model;
+﻿using ItemItem.controller;
+using ItemItem.model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentBased
+namespace ItemItem
 {
     class Program
     {
@@ -28,7 +28,7 @@ namespace ContentBased
 
             var user186 = data["186"];
             //Console.WriteLine("Prediction 186 for 1599: {0}", deviationMatrix.Predict(user186, "1599"));
-            var top5 = deviationMatrix.PredictTop(user186, 5);
+            var top5 = deviationMatrix.PredictTop(user186, 5);            
         }
     }
 }

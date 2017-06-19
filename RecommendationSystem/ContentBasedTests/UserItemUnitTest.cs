@@ -1,19 +1,19 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using ContentBased.model;
-using ContentBased;
-using ContentBased.controller;
+using ItemItem.model;
+using ItemItem;
+using ItemItem.controller;
 
 namespace ContentBasedTests
 {
     [TestClass]
-    public class ContentBasedUnitTest
+    public class UserItemUnitTest
     {
         private readonly static string FILE_PATH = "assets/userItem.data";
         private readonly static char DELIMITER = ',';
 
-        private ContentBasedDataWrapper dataWrapper;
+        private DataWrapper dataWrapper;
         private Dictionary<string, User> data;
         private DeviationMatrix deviationMatrix;
 
@@ -23,7 +23,7 @@ namespace ContentBasedTests
             data = DataProvider.GetData(FILE_PATH, DELIMITER);
             deviationMatrix = DeviationMatrixFactory.Instance.Create(data);
 
-            dataWrapper = new ContentBasedDataWrapper(data, deviationMatrix);
+            dataWrapper = new DataWrapper(data, deviationMatrix);
         }
 
         [TestMethod]

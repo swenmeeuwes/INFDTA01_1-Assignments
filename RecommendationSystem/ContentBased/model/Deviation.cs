@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentBased.model
+namespace ItemItem.model
 {
     public class Deviation
     {

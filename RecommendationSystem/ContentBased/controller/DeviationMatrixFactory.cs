@@ -1,11 +1,11 @@
-﻿using ContentBased.model;
+﻿using ItemItem.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentBased.controller
+namespace ItemItem.controller
 {
     public class DeviationMatrixFactory
     {
