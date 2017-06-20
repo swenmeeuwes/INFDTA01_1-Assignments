@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.similaritystrategies
 {
-    interface ISimilarityStrategy
+    public interface ISimilarityStrategy
     {
         double ComputeSimilarity(User u1, User u2);
     }

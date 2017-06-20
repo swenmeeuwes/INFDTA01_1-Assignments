@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.useritem
 {
-    static class UserExtensionMethods
+    public static class UserExtensionMethods
     {
         public static ArticleRating[] PredictRatings(this User[] users)
         {

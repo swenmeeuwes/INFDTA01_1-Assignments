@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.similaritystrategies
 {
-    class CosineSimilarity : ISimilarityStrategy
+    public class CosineSimilarity : ISimilarityStrategy
     {
         public double ComputeSimilarity(User u1, User u2)
         {

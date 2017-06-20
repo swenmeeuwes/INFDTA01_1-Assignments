@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem
 {
-    class DataProvider
+    public class DataProvider
     {
         readonly static char DELIMITER = ',';
         readonly static string DATASET_FILEPATH = "assets/userItem.data";
