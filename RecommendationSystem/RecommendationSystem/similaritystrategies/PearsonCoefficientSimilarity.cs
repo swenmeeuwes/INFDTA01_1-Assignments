@@ -20,7 +20,7 @@ namespace RecommendationSystem.similaritystrategies
 
             // If the two users haven't rated a single matching article
             if (articleRatingsU1.Length == 0 || articleRatingsU2.Length == 0)
-                return Double.NegativeInfinity;
+                return double.NegativeInfinity;
 
             // Numerator (above the line)
             // Denominator (below the line)
@@ -48,12 +48,14 @@ namespace RecommendationSystem.similaritystrategies
                 summationDenominatorAverageY += y[i].Rating;
             }
 
-            var n = articleRatingsU1.Length;
-
-            // Right bottom can result in 0 thus resulting in a NaN? (check left bottom side?)
-            var res = (summationNumerator - (summationNumeratorAverageX * summationNumeratorAverageY) / n)
+            var n = articleRatingsU1.Length;      
+            var pearsonCoefficient = (summationNumerator - (summationNumeratorAverageX * summationNumeratorAverageY) / n)
                 / (Math.Sqrt(summationDenominatorLeft - Math.Pow(summationDenominatorAverageX, 2) / n) * Math.Sqrt(summationDenominatorRight - Math.Pow(summationDenominatorAverageY, 2) / n));
-            return res;
+
+            // If the points of the pearson coefficient are on a horizontale line => exclude the user
+            if (Double.IsNaN(pearsonCoefficient))
+                return double.NegativeInfinity;
+            return pearsonCoefficient;            
         }
     }
 }
