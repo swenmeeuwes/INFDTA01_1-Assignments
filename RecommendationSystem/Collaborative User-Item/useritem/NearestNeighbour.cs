@@ -1,12 +1,12 @@
-﻿using RecommendationSystem.model;
-using RecommendationSystem.similaritystrategies;
+﻿using UserItem.model;
+using UserItem.similaritystrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecommendationSystem.useritem
+namespace UserItem.useritem
 {
     public class NearestNeighbour
     {

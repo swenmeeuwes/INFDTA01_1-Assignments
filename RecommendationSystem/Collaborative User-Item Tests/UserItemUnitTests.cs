@@ -1,15 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RecommendationSystem;
-using RecommendationSystem.model;
-using RecommendationSystem.similaritystrategies;
-using RecommendationSystem.useritem;
+using UserItem;
+using UserItem.model;
+using UserItem.similaritystrategies;
+using UserItem.useritem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecommendationSystem.Tests
+namespace UserItem.Tests
 {
     [TestClass()]
     public class UserItemUnitTest

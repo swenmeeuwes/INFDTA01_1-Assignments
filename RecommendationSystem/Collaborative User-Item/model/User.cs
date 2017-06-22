@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecommendationSystem.model
+namespace UserItem.model
 {
     public class User
     {

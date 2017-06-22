@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RecommendationSystem.model;
+using UserItem.model;
 
-namespace RecommendationSystem.similaritystrategies
+namespace UserItem.similaritystrategies
 {
     public class PearsonCoefficientSimilarity : ISimilarityStrategy
     {

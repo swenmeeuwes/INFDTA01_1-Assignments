@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-Item", "RecommendationSystem\Collaborative User-Item.csproj", "{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Item-Item", "Collaborative Item-Item\Collaborative Item-Item.csproj", "{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Item-Item", "ContentBased\Collaborative Item-Item.csproj", "{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Item-Item Tests", "Collaborative Item-Item Tests\Collaborative Item-Item Tests.csproj", "{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Item-Item Tests", "ContentBasedTests\Collaborative Item-Item Tests.csproj", "{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-Item", "Collaborative User-Item\Collaborative User-Item.csproj", "{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-ItemTests", "Collaborative User-ItemTests\Collaborative User-ItemTests.csproj", "{AB02ADA0-0E58-4371-B393-2D64FFD0BEBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative User-Item Tests", "Collaborative User-Item Tests\Collaborative User-Item Tests.csproj", "{AB02ADA0-0E58-4371-B393-2D64FFD0BEBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C19FC39A-B3E0-4767-BA32-D0FF919DFDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,6 +25,10 @@ Global
 		{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50F5B1C3-BB9F-480F-861C-CB505CFDCD53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EFAEBF1-F9AE-40DD-89F6-6B5F4A36B23A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB02ADA0-0E58-4371-B393-2D64FFD0BEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB02ADA0-0E58-4371-B393-2D64FFD0BEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB02ADA0-0E58-4371-B393-2D64FFD0BEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
