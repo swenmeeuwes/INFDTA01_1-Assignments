@@ -8,7 +8,7 @@ using ItemItem.controller;
 namespace ContentBasedTests
 {
     [TestClass]
-    public class UserItemUnitTest
+    public class ItemItemUnitTest
     {
         private readonly static string FILE_PATH = "assets/userItem.data";
         private readonly static char DELIMITER = ',';

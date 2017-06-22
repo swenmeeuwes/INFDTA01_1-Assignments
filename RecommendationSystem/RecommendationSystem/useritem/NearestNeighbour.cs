@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.useritem
 {
-    class NearestNeighbour
+    public class NearestNeighbour
     {
         // TODO: check for additional items with respect to the target user
         /// <summary>

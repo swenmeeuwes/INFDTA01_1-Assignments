@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.model
 {
-    class User
+    public class User
     {
         public string Id { get; set; }
         public double Similarity { get; set; }

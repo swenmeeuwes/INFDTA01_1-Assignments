@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecommendationSystem.similaritystrategies
 {
-    class ManhattanDistanceSimilarity : ISimilarityStrategy
+    public class ManhattanDistanceSimilarity : ISimilarityStrategy
     {
         public double ComputeSimilarity(User u1, User u2)
         {

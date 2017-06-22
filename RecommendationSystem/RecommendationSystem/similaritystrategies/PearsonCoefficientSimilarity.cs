@@ -7,7 +7,7 @@ using RecommendationSystem.model;
 
 namespace RecommendationSystem.similaritystrategies
 {
-    class PearsonCoefficientSimilarity : ISimilarityStrategy
+    public class PearsonCoefficientSimilarity : ISimilarityStrategy
     {
         public double ComputeSimilarity(User u1, User u2)
         {
