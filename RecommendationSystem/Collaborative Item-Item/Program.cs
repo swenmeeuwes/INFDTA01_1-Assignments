@@ -28,7 +28,8 @@ namespace ItemItem
 
             var user186 = data["186"];
             //Console.WriteLine("Prediction 186 for 1599: {0}", deviationMatrix.Predict(user186, "1599"));
-            var top5 = deviationMatrix.PredictTop(user186, 5);            
+            var top5 = deviationMatrix.PredictTop(user186, 5);
+            Array.ForEach(top5, p => Console.WriteLine(p));
         }
     }
 }
