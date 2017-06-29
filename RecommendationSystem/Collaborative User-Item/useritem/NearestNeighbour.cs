@@ -58,5 +58,49 @@ namespace UserItem.useritem
 
             return nearestNeighbours.Where(u => u != null).OrderByDescending(u => u.Similarity).ToArray();
         }
+
+        // Overloaded method witch will ensure all nearest neighbours have rated the target article
+        public User[] ComputeNearestNeighbour(User targetUser, string targetArticleId, User[] userPool, int maxNeighbours, double similarityThreshold, ISimilarityStrategy similarityStrategy)
+        {
+            // Optional: Check if the target user exists in the user pool
+            if (userPool.Contains(targetUser))
+                throw new Exception("[UserItem NearestNeighbour] Target user exists in the userpool.");
+
+            var nearestNeighbours = new User[maxNeighbours];
+            for (int i = 0; i < userPool.Length; i++)
+            {
+                var similarity = similarityStrategy.ComputeSimilarity(targetUser, userPool[i]);
+                userPool[i].Similarity = similarity;
+
+                // If the similarity between the user and target is lower than the threshold, skip to the next iteration
+                if (similarity < similarityThreshold)
+                    continue;
+
+                // If the neighbour hasn't rated the target article, skip to the next iteration
+                if (!userPool[i].articleRatings.Any(r => r.ArticleNumber == targetArticleId))
+                    continue;
+
+                // If the nearest neighbour list is not yet full, insert the user
+                var nearestNeighboursFound = nearestNeighbours.Count(u => u != null);
+                if (nearestNeighboursFound < nearestNeighbours.Length)
+                {
+                    var firstEmptySpot = Array.FindIndex(nearestNeighbours, n => n == null);
+                    nearestNeighbours[firstEmptySpot] = userPool[i];
+                }
+                // The list is full, replace the user with the lowest similarity
+                else
+                {
+                    // Could be made a 'single-pass'
+                    var lowestSimilarity = nearestNeighbours.Min(u => u.Similarity);
+                    var lowestSimilarityIndex = Array.FindIndex(nearestNeighbours, n => n.Similarity == lowestSimilarity);
+                    nearestNeighbours[lowestSimilarityIndex] = userPool[i];
+
+                    // Raise threshold to lowest similarity in the list
+                    similarityThreshold = nearestNeighbours.Min(u => u.Similarity);
+                }
+            }
+
+            return nearestNeighbours.Where(u => u != null).OrderByDescending(u => u.Similarity).ToArray();
+        }
     }
 }
