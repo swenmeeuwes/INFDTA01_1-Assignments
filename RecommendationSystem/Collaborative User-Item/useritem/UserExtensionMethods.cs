@@ -16,16 +16,12 @@ namespace UserItem.useritem
             var availableRatings = users.SelectMany(u => u.articleRatings).Select(r => r.ArticleNumber).Distinct().ToArray();
             for (int i = 0; i < availableRatings.Length; i++)
             {
-                var numeratorSummation = 0d;
-                for (int j = 0; j < users.Length; j++)
-                {
-                    var userRating = users[j].articleRatings.SingleOrDefault(r => r.ArticleNumber == availableRatings[i]);
-                    if (userRating == null)
-                        continue;
-
-                    numeratorSummation += users[j].Similarity * userRating.Rating;
-                }
-                var predictionRating = numeratorSummation / users.Sum(u => u.Similarity);
+                // Can be optimized by implementing it single-pass
+                var numeratorSummation = users.Where(u => u.articleRatings.Any(r => r.ArticleNumber == availableRatings[i]))
+                                                .Sum(u => u.Similarity * u.articleRatings.First(r => r.ArticleNumber == availableRatings[i]).Rating);
+                var denominatorSummation = users.Where(u => u.articleRatings.Any(r => r.ArticleNumber == availableRatings[i]))
+                                                .Sum(u => u.Similarity);
+                var predictionRating = numeratorSummation / denominatorSummation;
                 predictions.Add(new ArticleRating()
                 {
                     ArticleNumber = availableRatings[i],
