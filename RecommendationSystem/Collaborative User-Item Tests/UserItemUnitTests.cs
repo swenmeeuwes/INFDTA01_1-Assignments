@@ -73,10 +73,21 @@ namespace UserItem.Tests
             var nearestNeighboursPearson = new NearestNeighbour().ComputeNearestNeighbour(user7, userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
             var predictions = nearestNeighboursPearson.PredictRatings();
 
-            // Predicted rating for item 101
-            Assert.IsTrue(Math.Abs(2.741286897472 - predictions[0].Rating) / predictions[0].Rating <= 0.0000001d);
-            Assert.IsTrue(Math.Abs(2.67090274535989 - predictions[1].Rating) / predictions[1].Rating <= 0.0000001d);
-            Assert.IsTrue(Math.Abs(3.47705617849087 - predictions[2].Rating) / predictions[2].Rating <= 0.0000001d);
+            Assert.IsTrue(Math.Abs(2.741286897472 - predictions.First(r => r.ArticleNumber == "101").Rating) / predictions.First(r => r.ArticleNumber == "101").Rating <= 0.0000001d);
+            Assert.IsTrue(Math.Abs(2.67090274535989 - predictions.First(r => r.ArticleNumber == "103").Rating) / predictions.First(r => r.ArticleNumber == "103").Rating <= 0.0000001d);
+            Assert.IsTrue(Math.Abs(3.47705617849087 - predictions.First(r => r.ArticleNumber == "106").Rating) / predictions.First(r => r.ArticleNumber == "106").Rating <= 0.0000001d);
+        }
+
+        [TestMethod]
+        public void Diagnostic4()
+        {
+            var user4 = data["4"];
+            var userPool = data.Where(u => u.Key != user4.Id).Select(u => u.Value).ToArray();
+
+            var nearestNeighboursPearson = new NearestNeighbour().ComputeNearestNeighbour(user4, "101", userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
+            var prediction = nearestNeighboursPearson.PredictRatings().First(r => r.ArticleNumber == "101"); // Predicted rating for item 101
+
+            Assert.IsTrue(Math.Abs(2.63284325835078 - prediction.Rating) / prediction.Rating <= 0.0000001d);
         }
     }
 }
