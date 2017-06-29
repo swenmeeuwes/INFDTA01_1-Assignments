@@ -15,33 +15,18 @@ namespace UserItem
         {
             var data = DataProvider.GetData("assets/u.data", '\t');
 
-            var targetUserId = "4";
+            var targetUserId = "186";
             var targetUser = data[targetUserId];
             var userPool = data.Where(u => u.Key != targetUserId).Select(u => u.Value).ToArray();
-            var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 12, 0.35d, new CosineSimilarity());
+            var nearestNeighbours = new NearestNeighbour().ComputeNearestNeighbour(targetUser, userPool, 25, 0.35d, new PearsonCoefficientSimilarity());
 
-            // Prediction ratings test from slides lesson 2 - put in a unit test maybe?
-            var testNeighbours = new User[] {
-                new User("1", new ArticleRating[] {
-                    new ArticleRating() { ArticleNumber = "1", Rating = 4.5d }
-                }) { Similarity = 0.5 },
-                new User("2", new ArticleRating[] {
-                    new ArticleRating() { ArticleNumber = "1", Rating = 5d }
-                }) { Similarity = 0.7 },
-                new User("3", new ArticleRating[] {
-                    new ArticleRating() { ArticleNumber = "1", Rating = 3.5d }
-                }) { Similarity = 0.8 }
-            };
-            var r = testNeighbours.PredictRatings(); // Should be 4.275 according to slide
-            // -----
-
-            var predictions = nearestNeighbours.PredictRatings();
+            var predictions = nearestNeighbours.PredictRatings(3);
 
             Console.WriteLine("User {0} nearest neighbours are:", targetUser.Id);
             Array.ForEach(nearestNeighbours, p => Console.WriteLine(p));
 
             Console.WriteLine("User {0} has the following predictions:", targetUser.Id);
-            Array.ForEach(predictions.OrderBy(p => p.ArticleNumber).ToArray(), p => Console.WriteLine(p));
+            Array.ForEach(predictions.OrderByDescending(p => p.Rating).Take(8).ToArray(), p => Console.WriteLine(p));
 
             //ISimilarityStrategy similarityStrategy = new EuclideanDistanceSimilarity();
             //var euclideanDistanceSimilarity = similarityStrategy.ComputeSimilarity(data["1"], data["2"]);

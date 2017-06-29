@@ -89,5 +89,30 @@ namespace UserItem.Tests
 
             Assert.IsTrue(Math.Abs(2.63284325835078 - prediction.Rating) / prediction.Rating <= 0.0000001d);
         }
+
+        [TestMethod]
+        public void Diagnostic5()
+        {
+            // Add 2.8 rating for item 106 rated by user 7
+            data["7"].articleRatings = data["7"].articleRatings.Concat(new ArticleRating[] {
+                    new ArticleRating()
+                    {
+                        ArticleNumber = "106",
+                        Rating = 2.8
+                    }
+            }).ToArray();
+
+            var user7 = data["7"];
+            var userPool = data.Where(u => u.Key != user7.Id).Select(u => u.Value).ToArray();
+
+            var nearestNeighboursPearson = new NearestNeighbour().ComputeNearestNeighbour(user7, userPool, 3, 0.35d, new PearsonCoefficientSimilarity());
+            var predictions = nearestNeighboursPearson.PredictRatings();
+
+            var predictedRating101 = predictions.First(r => r.ArticleNumber == "101").Rating;
+            var predictedRating103 = predictions.First(r => r.ArticleNumber == "103").Rating;
+
+            Assert.IsTrue(Math.Abs(2.74059438594498 - predictedRating101) / predictedRating101 <= 0.0000001d);
+            Assert.IsTrue(Math.Abs(2.6291200705277 - predictedRating103) / predictedRating103 <= 0.0000001d);
+        }
     }
 }
